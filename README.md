@@ -7,7 +7,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
-            background-color: #000000;
+            background-color: #121212;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;

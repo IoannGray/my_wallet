@@ -1,113 +1,97 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    </head>
-<body>
-    </body>
-</html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Signet Wallet</title>
+    <title>Signet</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400&display=swap" rel="stylesheet">
+
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap');
+        :root {
+            --bg-color: #1a1a1a; /* Матовый графит */
+            --gold-color: #c5a059; /* Старое золото */
+            --card-bg: #222222;
+            --text-color: #a1a1a1; /* Серый для лейблов */
+        }
+        body {
+            background-color: var(--bg-color);
+            color: #ffffff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center; /* Центрируем всё по вертикали */
+        }
+        
+        /* Исправляем заголовок, убираем дефолтное название GitHub */
+        .header { 
+            font-family: 'Playfair Display', serif;
+            font-size: 20px; 
+            letter-spacing: 5px; 
+            color: var(--gold-color);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--gold-color);
+            padding-bottom: 5px;
+            margin-bottom: 50px;
+        }
 
-    :root {
-        --graphite: #1a1a1a; /* Матовый графит */
-        --gold: #c5a059;     /* Приглушенное старое золото */
-        --card-bg: #222222;
-        --text: #e0e0e0;
-    }
+        .card {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 320px;
+            padding: 40px 10px;
+            text-align: center;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            position: relative;
+        }
 
-    body {
-        background-color: var(--graphite);
-        color: var(--text);
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-    }
+        .balance-label { 
+            color: #8e8e93; 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 15px; 
+        }
 
-    .header { 
-        margin-top: 30px; 
-        font-family: 'Playfair Display', serif; /* Классический шрифт с засечками */
-        font-size: 22px; 
-        letter-spacing: 5px; 
-        color: var(--gold);
-        text-transform: uppercase;
-        border-bottom: 1px solid var(--gold);
-        padding-bottom: 5px;
-        margin-bottom: 40px;
-    }
+        /* Исправляем шрифт баланса.serif принудительно */
+        .balance-value { 
+            font-family: 'Playfair Display', serif !important;
+            font-size: 44px; 
+            font-weight: 600; 
+            color: var(--gold-color);
+        }
 
-    .card {
-        background: var(--card-bg);
-        width: 100%;
-        max-width: 320px;
-        padding: 40px 10px;
-        text-align: center;
-        border: 1px solid rgba(197, 160, 89, 0.3); /* Золотистая тонкая рамка */
-        box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-        position: relative;
-    }
+        .btn-group { 
+            display: flex; 
+            gap: 15px; 
+            width: 100%; 
+            max-width: 320px;
+            margin-top: 30px;
+        }
 
-    /* Декоративные уголки в стиле неоклассики */
-    .card::before {
-        content: "";
-        position: absolute;
-        top: 5px; left: 5px; right: 5px; bottom: 5px;
-        border: 1px solid rgba(197, 160, 89, 0.1);
-        pointer-events: none;
-    }
-
-    .balance-label { 
-        color: #888; 
-        font-size: 11px; 
-        text-transform: uppercase; 
-        letter-spacing: 2px; 
-        margin-bottom: 15px; 
-    }
-
-    .balance-value { 
-        font-family: 'Playfair Display', serif;
-        font-size: 44px; 
-        font-weight: 600; 
-        color: var(--gold);
-    }
-
-    .btn-group { 
-        display: flex; 
-        gap: 15px; 
-        width: 100%; 
-        max-width: 320px;
-        margin-top: 30px;
-    }
-
-    .btn {
-        background-color: transparent;
-        color: var(--gold);
-        border: 1px solid var(--gold);
-        padding: 14px;
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        flex: 1;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .btn:active {
-        background-color: var(--gold);
-        color: var(--graphite);
-    }
-</style>
+        .btn {
+            background-color: transparent;
+            color: var(--gold-color);
+            border: 1px solid var(--gold-color);
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex: 1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+    </style>
 </head>
 <body>
-    <div class="header" id="user-name">SIGNET</div>
+    <div class="header">SIGNET</div>
 
     <div class="card">
         <div class="balance-label">Доступный баланс</div>
@@ -115,23 +99,20 @@
     </div>
 
     <div class="btn-group">
-        <button class="btn" onclick="tgAction('Пополнение')">Ввод</button>
-        <button class="btn btn-dark" onclick="tgAction('Перевод')">Вывод</button>
+        <button class="btn" onclick="topUp()">Ввод</button>
+        <button class="btn btn-secondary" onclick="sendMoney()">Вывод</button>
     </div>
 
     <script>
         const tg = window.Telegram.WebApp;
-        tg.expand();
         tg.ready();
+        tg.expand();
 
-        // Отображаем имя пользователя
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            document.getElementById('user-name').innerText = tg.initDataUnsafe.user.first_name.toUpperCase();
+        function topUp() {
+            tg.showAlert("Для пополнения необходимо подключить сервер (Бэкенд).");
         }
-
-        function tgAction(type) {
-            tg.HapticFeedback.impactOccurred('medium'); // Вибрация при нажатии
-            tg.showAlert(`Функция "${type}" будет настроена на этапе подключения базы данных.`);
+        function sendMoney() {
+            tg.showAlert("Для вывода необходимо подключить сервер (Бэкенд).");
         }
     </script>
 </body>

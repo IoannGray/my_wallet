@@ -6,42 +6,101 @@
     <title>Signet Wallet</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: hidden;
-        }
-        .header { margin-top: 20px; font-size: 20px; font-weight: 600; letter-spacing: 1px; }
-        .card {
-            background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
-            width: 90%;
-            border-radius: 25px;
-            padding: 40px 20px;
-            margin: 30px 0;
-            text-align: center;
-            border: 1px solid #3a3a3c;
-        }
-        .balance-label { color: #8e8e93; font-size: 13px; text-transform: uppercase; margin-bottom: 10px; }
-        .balance-value { font-size: 42px; font-weight: 700; }
-        .btn-group { display: flex; gap: 15px; width: 100%; justify-content: center; }
-        .btn {
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 15px;
-            font-size: 16px;
-            font-weight: 600;
-            flex: 1;
-        }
-        .btn-dark { background-color: #1c1c1e; color: #ffffff; border: 1px solid #3a3a3c; }
-    </style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap');
+
+    :root {
+        --graphite: #1a1a1a; /* Матовый графит */
+        --gold: #c5a059;     /* Приглушенное старое золото */
+        --card-bg: #222222;
+        --text: #e0e0e0;
+    }
+
+    body {
+        background-color: var(--graphite);
+        color: var(--text);
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .header { 
+        margin-top: 30px; 
+        font-family: 'Playfair Display', serif; /* Классический шрифт с засечками */
+        font-size: 22px; 
+        letter-spacing: 5px; 
+        color: var(--gold);
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 5px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: var(--card-bg);
+        width: 100%;
+        max-width: 320px;
+        padding: 40px 10px;
+        text-align: center;
+        border: 1px solid rgba(197, 160, 89, 0.3); /* Золотистая тонкая рамка */
+        box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        position: relative;
+    }
+
+    /* Декоративные уголки в стиле неоклассики */
+    .card::before {
+        content: "";
+        position: absolute;
+        top: 5px; left: 5px; right: 5px; bottom: 5px;
+        border: 1px solid rgba(197, 160, 89, 0.1);
+        pointer-events: none;
+    }
+
+    .balance-label { 
+        color: #888; 
+        font-size: 11px; 
+        text-transform: uppercase; 
+        letter-spacing: 2px; 
+        margin-bottom: 15px; 
+    }
+
+    .balance-value { 
+        font-family: 'Playfair Display', serif;
+        font-size: 44px; 
+        font-weight: 600; 
+        color: var(--gold);
+    }
+
+    .btn-group { 
+        display: flex; 
+        gap: 15px; 
+        width: 100%; 
+        max-width: 320px;
+        margin-top: 30px;
+    }
+
+    .btn {
+        background-color: transparent;
+        color: var(--gold);
+        border: 1px solid var(--gold);
+        padding: 14px;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        flex: 1;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn:active {
+        background-color: var(--gold);
+        color: var(--graphite);
+    }
+</style>
 </head>
 <body>
     <div class="header" id="user-name">SIGNET</div>

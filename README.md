@@ -7,41 +7,53 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: hidden;
-        }
-        .header { margin-top: 20px; font-size: 20px; font-weight: 600; letter-spacing: 1px; }
-        .card {
-            background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
-            width: 90%;
-            border-radius: 25px;
-            padding: 40px 20px;
-            margin: 30px 0;
-            text-align: center;
-            border: 1px solid #3a3a3c;
-        }
-        .balance-label { color: #8e8e93; font-size: 13px; text-transform: uppercase; margin-bottom: 10px; }
-        .balance-value { font-size: 42px; font-weight: 700; }
-        .btn-group { display: flex; gap: 15px; width: 100%; justify-content: center; }
-        .btn {
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 15px;
-            font-size: 16px;
-            font-weight: 600;
-            flex: 1;
-        }
-        .btn-dark { background-color: #1c1c1e; color: #ffffff; border: 1px solid #3a3a3c; }
-    </style>
+        background-color: var(--bg-color);
+        /* Добавляем легкий радиальный градиент, чтобы центр чуть светился */
+        background-image: radial-gradient(circle at center, #1e1e1e 0%, #121212 100%);
+        color: var(--text-color);
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .header { 
+        margin-top: 20px; 
+        font-size: 18px; 
+        font-weight: 300; 
+        letter-spacing: 3px; 
+        color: #a1a1a1;
+    }
+    .card {
+        background: var(--card-bg);
+        width: 90%;
+        border-radius: 24px;
+        padding: 40px 20px;
+        margin: 30px 0;
+        text-align: center;
+        /* Тонкая рамка, которая создает эффект стекла */
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .balance-label { color: #636366; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .balance-value { font-size: 40px; font-weight: 600; }
+    
+    .btn-group { display: flex; gap: 12px; width: 100%; }
+    .btn {
+        background-color: #ffffff;
+        color: #000000;
+        border: none;
+        padding: 16px;
+        border-radius: 14px;
+        font-size: 15px;
+        font-weight: 600;
+        flex: 1;
+        transition: opacity 0.2s;
+    }
+    .btn-dark { background-color: #2c2c2e; color: #ffffff; border: 1px solid #3a3a3c; }
+</style>
 </head>
 <body>
     <div class="header" id="user-name">SIGNET</div>
